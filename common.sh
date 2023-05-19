@@ -1,3 +1,7 @@
+script=$(realpath "$0")
+script_name=$(dirname "$script")
+source $script_name/common.sh
+
 function_print_header() {
 	echo -e "\e[33m<<<<<<<<<<  $1 >>>>>>>>>>\e[0m"
 }
