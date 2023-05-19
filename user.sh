@@ -5,4 +5,4 @@ source $script_name/common.sh
 component=user
 schema_setup=mongo
 
-func_nodejs
+function_nodejs
