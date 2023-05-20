@@ -63,6 +63,8 @@ function_app_config() {
 	id ${app_user} &>>$log_file
 	if [ $? -ne 0 ]; then
 		useradd ${app_user} &>>$log_file
+	else
+		echo -e "user exists!" &>>$log_file
 	fi
 	
 	function_status_check $?
