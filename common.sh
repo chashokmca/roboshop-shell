@@ -45,7 +45,7 @@ function_nodejs() {
 
 function_start_component() {
 	function_print_header "copy catalogue service"
-	cp ${component}.service /etc/systemd/system/${component}.service
+	cp ${script_name}/${component}.service /etc/systemd/system/${component}.service
 	function_status_check $?
 
 	function_print_header "start catalogue service"
@@ -57,7 +57,12 @@ function_start_component() {
 
 function_app_config() {
 	function_print_header "add application user"
-	useradd roboshop
+	id roboshop
+	if [$? -ne 0]; then
+		useradd roboshop
+	else 
+		echo -e "User Already present"
+	fi
 	function_status_check $?
 
 	function_print_header "create application directory"
