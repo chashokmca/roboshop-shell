@@ -74,7 +74,7 @@ function_app_config() {
 	function_status_check $?
 
 	function_print_header "download application"
-	curl -o /tmp/${component}.zip https://roboshop-artifacts.s3.amazonaws.com/${component}. &>>$log_file
+	curl -o /tmp/${component}.zip https://roboshop-artifacts.s3.amazonaws.com/${component}.zip &>>$log_file
 	function_status_check $?	
 
 	function_print_header "extract application"
