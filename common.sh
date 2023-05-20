@@ -105,7 +105,7 @@ func_schema_setup() {
 		function_status_check $?
 		
 		function_print_header "install mysql schema"
-		mysql -h <MYSQL-SERVER-IPADDRESS> -uroot -pRoboShop@1 < /app/schema/shipping.sql &>>$log_file
+		mysql -h mysql-dev.adevops72.online -uroot -p${mysql_root_user} < /app/schema/shipping.sql &>>$log_file
 		function_status_check $?		
 	fi
 	
@@ -125,6 +125,10 @@ function_php() {
 	pip3.6 install -r requirements.txt &>>$log_file
 	function_status_check $?
 	
+	func_print_head "Update Passwords in System Service file"
+	sed -i -e "s|rabbitmq_appuser_password|${rabbitmq_appuser_password}|" ${script_path}/payment.service &>>$log_file
+	function_status_check $?
+	
 	function_start_component
 }
 
@@ -142,6 +146,12 @@ function_golang() {
 	go get &>>$log_file
 	go build &>>$log_file
 	function_status_check $?
+	
+	
+	func_print_head "Update Passwords in System Service file"
+	sed -i -e "s|rabbitmq_appuser_password|${rabbitmq_appuser_password}|" ${script_path}/dispatch.service &>>$log_file
+	function_status_check $?
+	
 	
 	function_start_component
 }
