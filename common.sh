@@ -60,12 +60,11 @@ function_start_component() {
 
 function_app_config() {
 	function_print_header "add application user"
-	id ${app_user}
+	id ${app_user} &>>$log_file
 	if [$? -ne 0]; then
 		useradd ${app_user} &>>$log_file
-	else 
-		echo -e "User Already present" &>>$log_file
 	fi
+	
 	function_status_check $?
 
 	function_print_header "create application directory"
