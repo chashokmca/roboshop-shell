@@ -91,7 +91,7 @@ func_schema_setup() {
 		function_status_check $?
 
 		function_print_header "configure application schema"
-		mongo --host 3.84.191.119 </app/schema/${component}.js
+		mongo --host mongodb-dev.adevops72.online </app/schema/${component}.js
 		function_status_check $?
 	fi
 	
