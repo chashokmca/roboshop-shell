@@ -77,7 +77,7 @@ function_app_config() {
 func_schema_setup() {
 	if [ ${schema_setup} == "mongo" ]; then
 		function_print_header "configure mongo db repo"
-		cp mongo.repo /etc/yum.repos.d/mongo.repo
+		cp ${script_name}/mongo.repo /etc/yum.repos.d/mongo.repo
 		function_status_check $?
 
 		function_print_header "install mongo db client"
@@ -85,7 +85,7 @@ func_schema_setup() {
 		function_status_check $?
 
 		function_print_header "configure application schema"
-		mongo --host MONGODB-SERVER-IPADDRESS </app/schema/${component}.js
+		mongo --host 3.84.191.119 </app/schema/${component}.js
 		function_status_check $?
 	fi
 	
