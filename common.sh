@@ -66,6 +66,7 @@ function_app_config() {
 	function_status_check $?
 
 	function_print_header "create application directory"
+	rm -rf /app
 	mkdir /app 
 	function_status_check $?
 
