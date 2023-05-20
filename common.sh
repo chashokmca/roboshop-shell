@@ -1,5 +1,7 @@
+app_user=roboshop
 script=$(realpath "$0")
 script_name=$(dirname "$script")
+log_file=/tmp/roboshop.log
 #source $script_name/common.sh
 
 function_print_header() {
